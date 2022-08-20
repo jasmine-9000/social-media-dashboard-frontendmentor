@@ -1,0 +1,54 @@
+@import "variables";
+@import "mixins";
+*, *::before, *::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+        color: $limeGreen;
+    }
+    &.dark {
+        color: white;
+    }
+}
+a:visited {
+    color: black;
+    &.dark {
+        color: white;
+    }
+}
+
+body.dark {
+    background-color: $VeryDarkBlueBG;
+    color: white;
+}
+
+.screen_resolution {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.container {
+    // FOR TINY SCREENS
+
+    @include breakpoint-down(x-small) {
+        width: 250px !important; /* it's imperative that for screens less than 320px, we have a width of 250px so we have space to breathe. */
+        margin-left: auto;
+        margin-right: auto; 
+
+    }
+
+    // FOR TABLETS
+
+    @include breakpoint-up(medium) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

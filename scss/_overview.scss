@@ -1,0 +1,238 @@
+@import 'variables';
+@import 'mixins';
+
+
+
+.overview {
+    transform: translateY(-50px); // transform all other stuff to match
+    // margin-top: 24px;
+    // global styling
+    color: $VeryDarkBlueTxt;
+    background-color: $WhiteBG;
+    &.dark {
+        background-color: $VeryDarkBlueBG;
+        color: $WhiteTxt;
+    }
+
+    // tiny screen styling
+
+    @include breakpoint-down(x-small) {
+        /*margin-right: 0 !important;
+        margin-left: 0 !important;
+        */
+        &__card {
+            width: 250px !important;
+        }
+        &__grid {
+            width: 250px !important;
+        }
+    }
+    // mobile styling
+    @include breakpoint-down(medium) {
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        // margin: 24px auto 0px auto;
+
+        display: flex;
+        flex-direction: column;
+        &__title {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        &__card {
+            margin-left: auto;
+            margin-right: auto;
+            width: 350px;
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+        &__grid {
+            width: 350px;
+        }
+    }
+    // tablet styling
+    @include breakpoint-up(medium) {
+        align-items: auto;
+        width: 550px;
+        margin: 24px auto 0px auto;
+        
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto;
+            grid-auto-rows: 125px;
+            grid-row-gap: 24px;
+            grid-column-gap: 26px;
+
+            margin: 0; 
+        }
+        &__card {
+            
+            &:nth-child(2n + 1) {
+                grid-column: 1 / 1;
+                grid-row: auto;
+            }
+            &:nth-child(2n + 2) {
+                grid-column: 2 / 2;
+                grid-row: auto;
+            }
+
+        }
+
+    }
+
+    // desktop styling
+    @include breakpoint-up(large) {
+        
+        width: 1110px;
+        margin: 0 auto;
+        
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            grid-auto-rows: 125px;
+            grid-row-gap: 24px;
+            grid-column-gap: 26px;
+
+            margin: 0; 
+        }
+        
+        &__card {
+            
+            &:nth-child(4n + 1) {
+                grid-column: 1 / 1;
+                grid-row: auto;
+            }
+            &:nth-child(4n + 2) {
+                grid-column: 2 / 2;
+                grid-row: auto;
+            }
+            &:nth-child(4n + 3) {
+                grid-column: 3 / 3;
+                grid-row: auto;
+            }
+            &:nth-child(4n + 4) {
+                grid-column: 4 / 4;
+                grid-row: auto;
+            }
+
+        }
+    }
+    &__title {
+        color: $VeryDarkBlueTxt;
+        padding-bottom: 30px;
+        &.dark {
+            color: $WhiteTxt;
+        }
+    }
+    /*
+    &__grid {
+        // background-color: magenta; // highlighting that we're working on this.
+    } */
+    &__card {
+        @include breakpoint-down(medium) {
+            width: 325px;
+        }
+        width: 256px;
+        height: 125px;
+
+        border-radius: 5px;
+        background-color: $LightGrayishBlueCardBG;
+        &.dark {
+            background-color: $DarkDesaturatedBlueCardBG;
+        }
+
+        &:hover {
+            background-color: $LightGrayishBlueCardBGHover;
+            transition: background-color $TransitionSpeed ease-in-out;
+            &.dark {
+                background-color: $DarkDesaturatedBlueCardBGHover;
+            }
+        }
+
+        // internal card styling
+        padding-left: 25px;
+        padding-right: 30px;
+        padding-bottom: 25px;
+        padding-top: 25px;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: space-between;
+        
+        &__title {
+            font-size: 11px;
+            font-weight: 700;
+            color: $DesaturatedBlueTxt;
+            &.dark {
+                color: $DarkGrayishBlueTxt;
+            }
+        }
+        // for each type of social media, define an icon background for .overview__card__logo, 
+        // and get rid of background color.
+
+        // this translates to: &.facebook { .overview__card__logo { background-image: facebook.svg } };
+        @each $name, $color in $media {
+            &.#{$name} {
+                .overview__card{
+                    &__logo {
+                        background-image: url("/images/icon-#{$name}.svg");
+                        background-color: none;
+                        // twitter has a shorter svg size than everyone else, so give it a unique height.
+                        @if $name == "twitter" {
+                            height: 17px;
+                        }
+                    }
+                }   
+            }
+        }
+        &__logo {
+            width: 20px;
+            height: 20px;
+            justify-self: end;
+            background-repeat: no-repeat;
+            
+        }
+
+        &__count {
+            font-size: 24px;
+            color: $VeryDarkBlueTxt;
+            font-weight: 700;
+            &.dark {
+                color: $WhiteTxt;
+            }
+        }
+
+        &__delta { 
+            
+            // in GRID, each item can justify itself within the grid. 
+            // horizontal justify:
+            justify-self: end;
+            // vertical justify:\
+            align-self: end;
+            font-size: 10px;
+            font-weight: 700;
+            color: $limeGreen;
+            &::before {
+                content:'';
+                width:10px;
+                height:10px;
+                display: inline-block;
+                background-image: url('/images/icon-up.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+            &.negative {
+                color: $brightRed;
+                &::before {
+                    background-image:url('/images/icon-down.svg');
+                }
+            }
+        }
+    }
+    
+}

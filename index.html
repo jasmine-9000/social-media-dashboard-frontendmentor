@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./css/style.css" >
+  <title>Frontend Mentor | [Challenge Name Here]</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="dark">
+  <!-- all classes are dark by default-->
+  <section class = "header dark">
+
+    <div class="header__container">
+      <div class="header__title dark">Social Media Dashboard</div>
+      <div class="header__followercount dark">
+        Total Followers: 23,004
+      </div>
+      
+      <div class="header__divider dark"></div>
+      <div class="header__darkmode dark">
+        Dark Mode
+      <div class="header__darkmode__toggle dark" id="darkmode__toggle"></div>
+      </div>
+      
+    </div>
+
+  </section>
+
+  <section class="cards container dark">
+    <div class="facebook cards__item dark">
+      <div class="cards__item__colortop dark"></div>
+      
+      <div class="cards__item__handle dark">
+        <div class="cards__item__logo"></div>
+        <a href="#">@nathanf</a>
+      </div>
+      <div class="cards__item__followers dark">
+        <span class="cards__item__followers__count">1987</span>
+        <p>Followers</p>
+      </div>
+      <div class="cards__item__followers__delta dark">
+        12 Today
+      </div>
+      
+    </div>
+    <div class="twitter cards__item dark">
+      <div class="cards__item__colortop dark"></div>
+      <div class="cards__item__handle dark">
+        <div class="cards__item__logo"></div>
+        <a href="#">@nathanf</a>
+      </div>
+      <div class="cards__item__followers dark">
+        <span class="cards__item__followers__count">1044</span>
+        <p>Followers</p>
+      </div>
+      <div class="cards__item__followers__delta dark">
+        99 Today
+      </div>
+      
+    </div>
+    <div class="instagram cards__item dark">
+      <div class="cards__item__colortop dark"></div>
+      <div class="cards__item__handle dark">
+        <div class="cards__item__logo"></div>
+        <a href="#">@realnathanf</a>
+      </div>
+      <div class="cards__item__followers dark">
+        <span class="cards__item__followers__count">11k</span>
+        <p>Followers</p>
+      </div>
+      <div class="cards__item__followers__delta dark">
+        1099 Today
+      </div>
+      
+    </div>
+    <div class="youtube cards__item dark">
+      <div class="cards__item__colortop dark"></div>
+      <div class="cards__item__handle dark">
+        <div class="cards__item__logo"></div>
+        <a href="#">Nathan F.</a>
+      </div>
+      <div class="cards__item__followers dark">
+        <span class="cards__item__followers__count">8239</span>
+        <p>Subscribers</p>
+      </div>
+      <div class="cards__item__followers__delta negative dark">
+        144 Today
+      </div>
+      
+    </div>
+
+  </section>
+    
+  <section class="overview container dark">
+    <h1 class="overview__title dark">Overview - Today</h1>
+    <div class="overview__grid dark">
+      <div class="overview__card facebook dark">
+        <div class="overview__card__title dark">Page Views</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">87</div>
+        <div class="overview__card__delta dark">3%</div>
+      </div>
+      <div class="overview__card facebook dark">
+        <div class="overview__card__title dark">Likes</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">52</div>
+        <div class="overview__card__delta dark negative">2%</div>
+      </div>
+      <div class="overview__card instagram dark">
+        <div class="overview__card__title dark">Likes</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">5462</div>
+        <div class="overview__card__delta dark">2257%</div>
+      </div>
+      <div class="overview__card instagram dark">
+        <div class="overview__card__title dark">Profile Views</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">52k</div>
+        <div class="overview__card__delta dark">1375%</div>
+      </div>
+      <div class="overview__card twitter dark">
+        <div class="overview__card__title dark">Retweets</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">117</div>
+        <div class="overview__card__delta dark">303%</div>
+      </div>
+      <div class="overview__card twitter dark">
+        <div class="overview__card__title dark">Likes</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">507</div>
+        <div class="overview__card__delta dark">553%</div>
+      </div>
+      <div class="overview__card youtube dark">
+        <div class="overview__card__title dark">Likes</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">107</div>
+        <div class="overview__card__delta dark negative">19%</div>
+      </div>
+      <div class="overview__card youtube dark">
+        <div class="overview__card__title dark">Total Views</div>
+        <div class="overview__card__logo dark"></div>
+        <div class="overview__card__count dark">1407</div>
+        <div class="overview__card__delta dark negative">12%</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a id="author" href="#"></a>.
+  </div>
+  <div class="screen_resolution">
+    Your screen size in pixels is: <span id="width"></span>px by <span id="height"></span>px.
+  </div>
+  <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+@import 'variables';
+@import 'mixins';
+
+
+.cards {
+
+    // MOBILE: single column style. width of container is 350px. 
+
+    @include breakpoint-down(medium) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: flex-end;
+        align-items: center;
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+
+    // tablet styles
+    @include breakpoint-up(medium) {
+        // width: 550px;
+        width: 750px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-auto-rows: 216px;
+        grid-row-gap: 30px;
+        grid-column-gap: 30px;
+        &__item {
+            justify-self: center; // center it horizontally within its grid cell
+            align-self: center; // center it vertically within its grid cell
+            &:nth-child(odd) {
+                grid-column: 1 / 2;
+            }
+            &:nth-child(even) {
+                grid-column: 2 / 2;
+            }
+        }
+    }
+    // desktop styles ( there must be at least 1440px to fit all 4 cards on 1 screen).
+
+    @include breakpoint-up(large) {
+        width: 1110px;
+        grid-template-columns: repeat(4, 1fr);
+        &__item {
+            &:nth-child(odd) {
+                grid-column: auto;
+                grid-row: 1/1;
+            }
+            &:nth-child(even) {
+                grid-column: auto;
+                grid-row: 1/1;
+            }
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+    
+
+    background-color: $WhiteBG;
+    color: black;
+    &.dark {
+        background-color: $VeryDarkBlueBG;
+        
+    }
+    
+    &__item {
+        transform: translateY(-50px); // translate all the cards up 50px so it overlaps the header. 
+        margin-bottom: 24px;
+        width: 325px;
+        max-width: 325px;
+
+        @include breakpoint-down(x-small) {
+            width: 250px;
+        }
+        @include breakpoint-up(large) {
+            width: 256px; // on desktop, make cards slightly smaller.
+        }
+        border-radius: 5px;
+        background-color: $LightGrayishBlueCardBG;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+
+        &__colortop {
+            width: 100%;
+            height: 5px;
+            background-color: magenta; // default color 
+            
+        }
+        &__handle {
+            display: flex;
+            align-items: center;
+            margin-top: 28px;
+            
+            font-weight: 700;
+            font-size: 12px;
+            
+            color: $DarkGrayishBlueTxt;
+            a {
+                color: $DarkGrayishBlueTxt !important; /* place emphasis that links in card__handle must be Dark Gray, and swap colors upon class change.*/
+            }
+            &.dark { 
+                a {
+                    color: $DesaturatedBlueTxt !important;
+                }
+            }
+        }
+        &__logo {
+            display: inline-block;
+            min-width: 20px;
+            width: 20px;
+            height: 20px;
+            background-repeat: no-repeat;
+            margin-right: 0.5rem;
+        }
+        &__followers {
+            text-align: center;
+            margin-top: 30px;
+            &__count {
+                font-size: 42px;
+                font-weight: 700;
+            }
+            p {
+                font-size: 8px;
+                color: $DesaturatedBlueTxt;
+                text-transform: uppercase;
+                letter-spacing: 6px;
+            }
+        }
+
+        &__followers__delta {
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 27px;
+            font-size: 9px;
+            color: $limeGreen;
+            font-weight: 700;
+            &::before {
+                position: absolute;
+                top: 0px;
+                left: -10px;
+                content: '';
+                height: 10px;
+                width: 10px;
+                background-image: url('/images/icon-up.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+
+            }
+            &.negative {
+                color: $brightRed;
+                &::before {
+                    background-image: url('/images/icon-down.svg');
+                }
+            }
+        }
+        
+        // for each type of social media, style cards__item with its own card color, logo, and link hover
+        @each $name, $color in $media {
+            &.#{$name} {
+                .cards__item {
+                    &__colortop {
+                        background-color: $color;
+                    }
+                    &__logo {
+                        background-image: url("/images/icon-#{$name}.svg");
+                        // twitter's logo has a different height than the rest of them 
+                        @if $name == "twitter" {
+                            height: 17px;
+                        }
+                    }
+                    &__handle {
+                        // compensate for the 3px missing from the logo to make all cards even.
+                        @if $name == "twitter" {
+                            margin-top: calc(28px + 3px);
+                        }
+                        a:hover {
+                            color: $color;
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        &:hover {
+            background-color: $LightGrayishBlueCardBGHover;
+            transition: background-color $TransitionSpeed ease-in-out;
+        }
+        &.dark {
+            background-color: $DarkDesaturatedBlueCardBG;
+            color: $WhiteTxt;
+            &:hover {
+                background-color: $DarkDesaturatedBlueCardBGHover;
+            }
+        }
+    }
+    
+    
+    
+}

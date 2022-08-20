@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+*, *::before, *::after {
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px; }
+
+a {
+  text-decoration: none;
+  color: white; }
+  a:hover {
+    color: #1db489; }
+  a.dark {
+    color: white; }
+
+a:visited {
+  color: black; }
+  a:visited.dark {
+    color: white; }
+
+body.dark {
+  background-color: #1e202a;
+  color: white; }
+
+.screen_resolution {
+  text-align: center;
+  margin-top: 1rem; }
+
+@media screen and (max-width: 320px) {
+  .container {
+    width: 250px !important;
+    /* it's imperative that for screens less than 320px, we have a width of 250px so we have space to breathe. */
+    margin-left: auto;
+    margin-right: auto; } }
+
+@media screen and (min-width: 600px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto; } }
+
+@use 'mixins';
+.header {
+  background-color: #f5f7ff;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px; }
+  .header__container {
+    padding-top: 40px;
+    padding-bottom: 90px;
+    padding-left: 26px;
+    padding-right: 26px; }
+    @media screen and (min-width: 600px) {
+      .header__container {
+        padding-left: 18px;
+        padding-right: 16px; } }
+    @media screen and (min-width: 1200px) {
+      .header__container {
+        padding-left: 0px;
+        padding-right: 0px; } }
+  @media screen and (min-width: 600px) {
+    .header__container {
+      width: 750px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media screen and (min-width: 1200px) {
+    .header__container {
+      width: 1110px; } }
+  .header.dark {
+    background-color: #1f212e;
+    color: #8b97c6; }
+  .header__title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    padding-bottom: 12px;
+    color: #1f212e; }
+    .header__title.dark {
+      color: white; }
+    @media screen and (min-width: 600px) {
+      .header__title {
+        font-size: 24px; } }
+  .header__followercount {
+    padding-bottom: 27px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #63687e; }
+    .header__followercount.dark {
+      color: #8b97c6; }
+  .header__divider {
+    border-top: 1px solid #63687e; }
+    .header__divider.dark {
+      border-top: 1px solid #252a41; }
+  .header__darkmode {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #63687e; }
+    .header__darkmode.dark {
+      color: #8b97c6; }
+  .header__darkmode__toggle {
+    align-self: right;
+    cursor: pointer;
+    position: relative;
+    height: 24px;
+    width: 48px;
+    border-radius: 20px;
+    background-color: #aeb3cb;
+    display: inline-block; }
+    .header__darkmode__toggle::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      border-radius: 9px;
+      top: 3px;
+      left: 3px;
+      right: 0;
+      background-color: #f5f7ff;
+      transition: left 100ms ease-in-out; }
+    .header__darkmode__toggle.dark {
+      background-image: linear-gradient(to right, #378fe6, #3eda82);
+      background-color: #378fe6; }
+      .header__darkmode__toggle.dark::before {
+        background-color: #252a41; }
+    .header__darkmode__toggle.toggled::before {
+      left: 25px; }
+
+.cards {
+  background-color: white;
+  color: black; }
+  @media screen and (max-width: 600px) {
+    .cards {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: flex-end;
+      align-items: center;
+      width: 350px;
+      margin-left: auto;
+      margin-right: auto; } }
+  @media screen and (min-width: 600px) {
+    .cards {
+      width: 750px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 216px;
+      grid-row-gap: 30px;
+      grid-column-gap: 30px; }
+      .cards__item {
+        justify-self: center;
+        align-self: center; }
+        .cards__item:nth-child(odd) {
+          grid-column: 1 / 2; }
+        .cards__item:nth-child(even) {
+          grid-column: 2 / 2; } }
+  @media screen and (min-width: 1200px) {
+    .cards {
+      width: 1110px;
+      grid-template-columns: repeat(4, 1fr); }
+      .cards__item:nth-child(odd) {
+        grid-column: auto;
+        grid-row: 1/1; }
+      .cards__item:nth-child(even) {
+        grid-column: auto;
+        grid-row: 1/1; }
+      .cards__item:last-child {
+        margin-right: 0px; } }
+  .cards.dark {
+    background-color: #1e202a; }
+  .cards__item {
+    transform: translateY(-50px);
+    margin-bottom: 24px;
+    width: 325px;
+    max-width: 325px;
+    border-radius: 5px;
+    background-color: #f0f2fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; }
+    @media screen and (max-width: 320px) {
+      .cards__item {
+        width: 250px; } }
+    @media screen and (min-width: 1200px) {
+      .cards__item {
+        width: 256px; } }
+    .cards__item__colortop {
+      width: 100%;
+      height: 5px;
+      background-color: magenta; }
+    .cards__item__handle {
+      display: flex;
+      align-items: center;
+      margin-top: 28px;
+      font-weight: 700;
+      font-size: 12px;
+      color: #63687e; }
+      .cards__item__handle a {
+        color: #63687e !important;
+        /* place emphasis that links in card__handle must be Dark Gray, and swap colors upon class change.*/ }
+      .cards__item__handle.dark a {
+        color: #8b97c6 !important; }
+    .cards__item__logo {
+      display: inline-block;
+      min-width: 20px;
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      margin-right: 0.5rem; }
+    .cards__item__followers {
+      text-align: center;
+      margin-top: 30px; }
+      .cards__item__followers__count {
+        font-size: 42px;
+        font-weight: 700; }
+      .cards__item__followers p {
+        font-size: 8px;
+        color: #8b97c6;
+        text-transform: uppercase;
+        letter-spacing: 6px; }
+    .cards__item__followers__delta {
+      position: relative;
+      margin-top: 30px;
+      margin-bottom: 27px;
+      font-size: 9px;
+      color: #1db489;
+      font-weight: 700; }
+      .cards__item__followers__delta::before {
+        position: absolute;
+        top: 0px;
+        left: -10px;
+        content: '';
+        height: 10px;
+        width: 10px;
+        background-image: url("/images/icon-up.svg");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .cards__item__followers__delta.negative {
+        color: #dc414c; }
+        .cards__item__followers__delta.negative::before {
+          background-image: url("/images/icon-down.svg"); }
+    .cards__item.facebook .cards__item__colortop {
+      background-color: #198ff5; }
+    .cards__item.facebook .cards__item__logo {
+      background-image: url("/images/icon-facebook.svg"); }
+    .cards__item.facebook .cards__item__handle a:hover {
+      color: #198ff5; }
+    .cards__item.youtube .cards__item__colortop {
+      background-color: #c4032a; }
+    .cards__item.youtube .cards__item__logo {
+      background-image: url("/images/icon-youtube.svg"); }
+    .cards__item.youtube .cards__item__handle a:hover {
+      color: #c4032a; }
+    .cards__item.instagram .cards__item__colortop {
+      background-color: #fdc468; }
+    .cards__item.instagram .cards__item__logo {
+      background-image: url("/images/icon-instagram.svg"); }
+    .cards__item.instagram .cards__item__handle a:hover {
+      color: #fdc468; }
+    .cards__item.twitter .cards__item__colortop {
+      background-color: #1ca0f2; }
+    .cards__item.twitter .cards__item__logo {
+      background-image: url("/images/icon-twitter.svg");
+      height: 17px; }
+    .cards__item.twitter .cards__item__handle {
+      margin-top: calc(28px + 3px); }
+      .cards__item.twitter .cards__item__handle a:hover {
+        color: #1ca0f2; }
+    .cards__item:hover {
+      background-color: #e1e3f0;
+      transition: background-color 500ms ease-in-out; }
+    .cards__item.dark {
+      background-color: #252a41;
+      color: white; }
+      .cards__item.dark:hover {
+        background-color: #333a56; }
+
+.overview {
+  transform: translateY(-50px);
+  color: #1e202a;
+  background-color: white;
+  /*
+    &__grid {
+        // background-color: magenta; // highlighting that we're working on this.
+    } */ }
+  .overview.dark {
+    background-color: #1e202a;
+    color: white; }
+  @media screen and (max-width: 320px) {
+    .overview {
+      /*margin-right: 0 !important;
+        margin-left: 0 !important;
+        */ }
+      .overview__card {
+        width: 250px !important; }
+      .overview__grid {
+        width: 250px !important; } }
+  @media screen and (max-width: 600px) {
+    .overview {
+      width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column; }
+      .overview__title {
+        margin-left: auto;
+        margin-right: auto; }
+      .overview__card {
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px; }
+        .overview__card:not(:last-child) {
+          margin-bottom: 1rem; }
+      .overview__grid {
+        width: 350px; } }
+  @media screen and (min-width: 600px) {
+    .overview {
+      align-items: auto;
+      width: 550px;
+      margin: 24px auto 0px auto; }
+      .overview__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        grid-auto-rows: 125px;
+        grid-row-gap: 24px;
+        grid-column-gap: 26px;
+        margin: 0; }
+      .overview__card:nth-child(2n + 1) {
+        grid-column: 1 / 1;
+        grid-row: auto; }
+      .overview__card:nth-child(2n + 2) {
+        grid-column: 2 / 2;
+        grid-row: auto; } }
+  @media screen and (min-width: 1200px) {
+    .overview {
+      width: 1110px;
+      margin: 0 auto; }
+      .overview__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        grid-auto-rows: 125px;
+        grid-row-gap: 24px;
+        grid-column-gap: 26px;
+        margin: 0; }
+      .overview__card:nth-child(4n + 1) {
+        grid-column: 1 / 1;
+        grid-row: auto; }
+      .overview__card:nth-child(4n + 2) {
+        grid-column: 2 / 2;
+        grid-row: auto; }
+      .overview__card:nth-child(4n + 3) {
+        grid-column: 3 / 3;
+        grid-row: auto; }
+      .overview__card:nth-child(4n + 4) {
+        grid-column: 4 / 4;
+        grid-row: auto; } }
+  .overview__title {
+    color: #1e202a;
+    padding-bottom: 30px; }
+    .overview__title.dark {
+      color: white; }
+  .overview__card {
+    width: 256px;
+    height: 125px;
+    border-radius: 5px;
+    background-color: #f0f2fa;
+    padding-left: 25px;
+    padding-right: 30px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: space-between; }
+    @media screen and (max-width: 600px) {
+      .overview__card {
+        width: 325px; } }
+    .overview__card.dark {
+      background-color: #252a41; }
+    .overview__card:hover {
+      background-color: #e1e3f0;
+      transition: background-color 500ms ease-in-out; }
+      .overview__card:hover.dark {
+        background-color: #333a56; }
+    .overview__card__title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8b97c6; }
+      .overview__card__title.dark {
+        color: #63687e; }
+    .overview__card.facebook .overview__card__logo {
+      background-image: url("/images/icon-facebook.svg");
+      background-color: none; }
+    .overview__card.youtube .overview__card__logo {
+      background-image: url("/images/icon-youtube.svg");
+      background-color: none; }
+    .overview__card.instagram .overview__card__logo {
+      background-image: url("/images/icon-instagram.svg");
+      background-color: none; }
+    .overview__card.twitter .overview__card__logo {
+      background-image: url("/images/icon-twitter.svg");
+      background-color: none;
+      height: 17px; }
+    .overview__card__logo {
+      width: 20px;
+      height: 20px;
+      justify-self: end;
+      background-repeat: no-repeat; }
+    .overview__card__count {
+      font-size: 24px;
+      color: #1e202a;
+      font-weight: 700; }
+      .overview__card__count.dark {
+        color: white; }
+    .overview__card__delta {
+      justify-self: end;
+      align-self: end;
+      font-size: 10px;
+      font-weight: 700;
+      color: #1db489; }
+      .overview__card__delta::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        background-image: url("/images/icon-up.svg");
+        background-repeat: no-repeat;
+        background-position: center center; }
+      .overview__card__delta.negative {
+        color: #dc414c; }
+        .overview__card__delta.negative::before {
+          background-image: url("/images/icon-down.svg"); }

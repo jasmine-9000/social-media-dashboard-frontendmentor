@@ -1,0 +1,142 @@
+@import 'variables';
+@use 'mixins';
+
+.header { 
+    background-color: $VeryPaleBlueTopBG;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    &__container {
+        padding-top: 40px;
+        padding-bottom: 90px;
+    
+        // MOBILE: padding-left-right: 26px, 26px;
+        // TABLET: padding-left-right: 18px, 16px;
+        // DESKTOP: paddint-left-right: 0,0
+        padding-left: 26px;
+        padding-right: 26px;
+
+        @include breakpoint-up(medium) {
+            padding-left: 18px;
+            padding-right: 16px;
+        }
+        @include breakpoint-up(large) {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        
+
+    }
+    @include breakpoint-up(medium) {
+        &__container {
+            width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    @include breakpoint-up(large) {
+        &__container {
+            width: 1110px;
+            
+        }
+    }
+    
+    &.dark {
+        background-color: $VeryDarkBlueTopBG;
+        
+        color: $DesaturatedBlueTxt;
+    }
+
+    &__title {
+        // MOBILE FORMATTING
+        
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+        padding-bottom: 12px;
+
+        // LIGHT MODE
+        color: $VeryDarkBlueTopBG;
+        // DARK MODE CHANGES 
+        &.dark {
+            color: $WhiteTxt;
+        }
+
+        @include breakpoint-up(medium) {
+            font-size: 24px;
+        }
+
+    }
+
+    &__followercount {
+        padding-bottom: 27px;
+        font-size: 12px;
+        font-weight: 700;
+        color: $DarkGrayishBlueTxt;
+        &.dark {
+            color: $DesaturatedBlueTxt;
+        }
+
+    }
+
+    &__divider {
+        border-top: 1px solid $DarkGrayishBlueTxt; 
+        &.dark {
+            border-top: 1px solid $DarkDesaturatedBlueCardBG;
+        }       
+    }
+
+    &__darkmode {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+        font-size: 12px;
+        font-weight: 700;
+        color: $DarkGrayishBlueTxt;
+        &.dark {
+            color: $DesaturatedBlueTxt;
+        }
+    }
+
+
+    &__darkmode__toggle {
+        align-self: right;
+        cursor: pointer;
+        position: relative;
+        height: 24px;
+        width: 48px;
+        border-radius: 20px;
+        background-color: $LightToggle;
+        display: inline-block;
+        // light mode 
+        &::before {
+            content: '';
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            border-radius: 9px;
+            top: 3px;
+            left: 3px; // default position
+            right: 0;
+            background-color: $VeryPaleBlueTopBG;
+            transition: left 100ms ease-in-out;
+        }
+        &.dark {
+            background-image: linear-gradient(to right, $DarkToggleFrom, $DarkToggleTo);
+            // fallback background color
+            background-color: $DarkToggleFrom;
+            &::before {
+                background-color: $DarkDesaturatedBlueCardBG;
+            }
+
+        }
+        &.toggled {
+            &::before {
+                left: 25px;
+            }
+        }
+
+    }
+}

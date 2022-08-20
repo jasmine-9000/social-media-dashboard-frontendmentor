@@ -1,0 +1,39 @@
+
+@function invert($color, $amount: 100%) {
+    $inverse: change-color($color, $hue: hue($color) + 180);
+    @return mix($inverse, $color, $amount);
+}
+
+$breakpoints: ("x-small": 320px, "small": 375px, "medium": 600px, "xmedium": 1024px, "large": 1200px);
+
+@mixin breakpoint-up($size) {
+    @media screen and (min-width: map-get($map: $breakpoints, $key: $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media screen and (max-width: map-get($map: $breakpoints, $key: $size)) {
+        @content;
+    }
+}
+
+$media: (
+    "facebook": $Facebook,
+    "youtube": $YouTube,
+    "instagram": $InstagramFrom,
+    "twitter": $Twitter
+);
+
+@mixin tablet-only() {
+    @media screen and (min-width: 600px) and (max-width: 1024px) {
+        @content;
+    }
+}
+
+
+// Settings
+$MobileWidth: 330px;
+$TabletWidth: 750px;
+$DesktopWidth: 1110px;
+

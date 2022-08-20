@@ -1,0 +1,50 @@
+// Primary Colors
+
+$limeGreen: hsl(163, 72%, 41%);
+$brightRed: hsl(356, 69%, 56%);
+
+$Facebook: hsl(208, 92%, 53%);
+$Twitter: hsl(203, 89%, 53%);
+$InstagramFrom: hsl(37, 97%, 70%);
+$InstagramTo: hsl(329, 70%, 58%);
+$YouTube: hsl(348, 97%, 39%);
+
+
+// ------------------ TOGGLE ---------------------- //
+// Dark Theme
+
+$DarkToggleFrom: hsl(210, 78%, 56%);
+$DarkToggleTo: hsl(146, 68%, 55%);
+
+// Light Theme
+
+$LightToggle: hsl(230, 22%, 74%);
+
+// ------------------------------------------------//
+
+
+// Neutral
+
+// Dark Theme
+
+$VeryDarkBlueBG: hsl(230, 17%, 14%);
+$VeryDarkBlueTopBG: hsl(232, 19%, 15%);
+$DarkDesaturatedBlueCardBG: hsl(228, 28%, 20%);
+$DesaturatedBlueTxt: hsl(228, 34%, 66%);
+$WhiteTxt: hsl(0, 0%, 100%);
+$DarkDesaturatedBlueCardBGHover: #333a56;
+
+
+//Light Theme
+
+$WhiteBG: hsl(0, 0%, 100%);
+$VeryPaleBlueTopBG: hsl(225, 100%, 98%);
+$LightGrayishBlueCardBG: hsl(227, 47%, 96%);
+$DarkGrayishBlueTxt: hsl(228, 12%, 44%);
+$VeryDarkBlueTxt: hsl(230, 17%, 14%);
+$LightGrayishBlueCardBGHover: #e1e3f0;
+
+
+// Speeds
+
+$TransitionSpeed: 500ms;
